@@ -1,0 +1,121 @@
+```html
+<h2>Age Calculator 🎂</h2>
+
+<input
+type="text"
+id="name"
+placeholder="Enter Name">
+
+<br><br>
+
+<input
+type="date"
+id="dob">
+
+<br><br>
+
+<button onclick="calculateAge()">
+Calculate Age
+</button>
+
+<button onclick="clearData()">
+Clear
+</button>
+
+<h3 id="result"></h3>
+
+<script>
+
+function calculateAge(){
+
+let name =
+document
+.getElementById("name")
+.value;
+
+let dob =
+document
+.getElementById("dob")
+.value;
+
+if(
+!name ||
+!dob
+){
+
+alert(
+"Enter name and birthday"
+);
+
+return;
+
+}
+
+let birth =
+new Date(dob);
+
+let today =
+new Date();
+
+let age =
+today.getFullYear()
+-
+birth.getFullYear();
+
+let month =
+today.getMonth()
+-
+birth.getMonth();
+
+if(
+month < 0 ||
+
+(
+month===0 &&
+
+today.getDate()
+<
+birth.getDate()
+
+)
+
+){
+
+age--;
+
+}
+
+document
+.getElementById("result")
+.innerHTML =
+
+"🎉 " +
+
+name +
+
+" is " +
+
+age +
+
+" years old ❤️";
+
+}
+
+function clearData(){
+
+document
+.getElementById("name")
+.value="";
+
+document
+.getElementById("dob")
+.value="";
+
+document
+.getElementById("result")
+.innerHTML="";
+
+}
+
+</script>
+```

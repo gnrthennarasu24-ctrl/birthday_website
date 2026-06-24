@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday</title>
+
+<style>
+img {
+  border-radius: 50%;
+}
+body{
+margin:0;
+font-family:Arial;
+
+background:
+linear-gradient(
+135deg,
+#98fb98,
+#b7ffb7
+);
+
+overflow:hidden;
+}
+
+
+/* Header */
+
+.sticky{
+
+position:sticky;
+
+top:0;
+
+padding:15px;
+
+text-align:center;
+
+font-size:30px;
+
+background:#cae8ca;
+
+border-bottom:3px solid green;
+
+}
+
+/* Center */
+
+.container{
+
+height:80vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.card{
+
+text-align:center;
+
+padding:40px;
+
+background:white;
+
+border-radius:20px;
+
+box-shadow:
+0 10px 25px rgba(0,0,0,.2);
+
+}
+
+button{
+
+padding:15px 35px;
+
+border:none;
+
+background:#ff4d6d;
+
+color:white;
+
+font-size:18px;
+
+border-radius:30px;
+
+cursor:pointer;
+
+}
+
+button:hover{
+
+transform:scale(1.08);
+
+}
+
+/* Popup */
+
+#popup{
+
+display:none;
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(0,0,0,.8);
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.gift-box{
+
+background:white;
+
+width:800px;
+
+padding:25px;
+
+border-radius:20px;
+
+text-align:center;
+
+animation:open .6s;
+
+}
+
+.photos{
+
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:15px;
+
+}
+
+.photos img{
+
+width:100%;
+
+height:230px;
+
+object-fit:cover;
+
+border-radius:15px;
+
+}
+
+.close{
+
+float:right;
+
+font-size:35px;
+
+cursor:pointer;
+
+}
+
+@keyframes open{
+
+from{
+
+transform:scale(.2);
+
+opacity:0;
+
+}
+
+to{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+    <img src="IMAGE1.jpeg" alt="Paris" width="300" height="300">
+
+
+<div class="sticky">
+🎂 Happy Birthday Thennu 🎂
+</div>
+
+<h2>Age Calculator 🎂</h2>
+
+<input
+type="text"
+id="name"
+placeholder="Enter Name">
+
+<br><br>
+
+<input
+type="date"
+id="dob">
+
+<br><br>
+
+<button onclick="calculateAge()">
+Calculate Age
+</button>
+
+<button onclick="clearData()">
+Clear
+</button>
+
+<h3 id="result"></h3>
+
+<script>
+
+function calculateAge(){
+
+let name =
+document
+.getElementById("name")
+.value;
+
+let dob =
+document
+.getElementById("dob")
+.value;
+
+if(
+!name ||
+!dob
+){
+
+alert(
+"Enter name and birthday"
+);
+
+return;
+
+}
+
+let birth =
+new Date(dob);
+
+let today =
+new Date();
+
+let age =
+today.getFullYear()
+-
+birth.getFullYear();
+
+let month =
+today.getMonth()
+-
+birth.getMonth();
+
+if(
+month < 0 ||
+
+(
+month===0 &&
+
+today.getDate()
+<
+birth.getDate()
+
+)
+
+){
+
+age--;
+
+}
+
+document
+.getElementById("result")
+.innerHTML =
+
+"🎉 " +
+
+name +
+
+" is " +
+
+age +
+
+" years old ❤️";
+
+}
+
+function clearData(){
+
+document
+.getElementById("name")
+.value="";
+
+document
+.getElementById("dob")
+.value="";
+
+document
+.getElementById("result")
+.innerHTML="";
+
+}
+
+</script>
+
+<button onclick="showWish()">
+🎁 Open Surprise
+</button>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Dear Friend</h2>
+
+<p>
+Wishing you a day filled with happiness,
+laughter and endless memories ❤️
+</p>
+
+<br>
+
+<button onclick="showWish()">
+🎁 Open Surprise
+</button>
+
+</div>
+
+</div>
+
+<!-- Popup -->
+
+<div id="popup">
+
+<div class="gift-box">
+
+<span class="close"
+onclick="closeBox()">
+
+</span>
+
+<h2>🎉 Special Memories 🎉</h2>
+
+<div class="photos">
+
+
+<img src="IMAGE2.jpeg">
+
+<img src="IMAGE6.jpeg">
+
+<img src="IMAGE4.jpeg">
+
+<img src="IMAGE5.jpeg">
+</div>
+
+<br>
+
+<p>
+Happy Birthday ❤️
+Enjoy your memories
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+function showWish(){
+
+document
+.getElementById("popup")
+.style.display="flex";
+
+}
+
+function closeBox(){
+
+document
+.getElementById("popup")
+.style.display="none";
+
+}
+
+</script>
+
+</body>
+
+</html>
